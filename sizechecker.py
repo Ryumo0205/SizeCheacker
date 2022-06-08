@@ -1,7 +1,6 @@
-from ast import Pass
 import sys
 sys.path.append("modules")  # 新增根目錄下資料夾的模組搜尋路徑
-import GUI
+import GUI #匯入GUI腳本
 from pathlib import Path
 from PIL import Image
 
