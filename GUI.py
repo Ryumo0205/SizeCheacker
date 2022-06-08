@@ -1,3 +1,7 @@
+#================================#
+#程式請從主要腳本執行,此腳本僅定義UI
+#================================#
+
 from tkinter.scrolledtext import ScrolledText
 import tkinter as tk
 from tkinter.ttk import Combobox
@@ -9,7 +13,7 @@ from turtle import width
 
 
 def CHECK_IMG():
-    import sizechecker as SC
+    import sizechecker as SC #匯入主要腳本
     MULT_NUM = RADIOVALUE.get()  # 取得要檢查的倍數
     SC.SizeCheck(MULT_NUM)  # 將倍數放入引數執行檢查
     CHECK_TIMES = 0
