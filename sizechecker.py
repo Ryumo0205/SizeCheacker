@@ -5,6 +5,8 @@ import GUI
 from pathlib import Path
 from PIL import Image
 
+#ListBox Ver
+
 """ 檢查資料夾路境內的圖片能否被設定的數字整除 """
 #PATH_STR = GUI.ENTRY_SPACE.get()
 #IMGS_PATH = list(Path(PATH_STR).glob("*"))  # 定義圖片路徑為列表
