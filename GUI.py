@@ -57,7 +57,7 @@ MSG_SPACE = tk.Listbox(FRAME, width=53, height=18)
 MSG_SPACE.place(x=30, y=150)
 SCROLL_BAR = tk.Scrollbar(FRAME, command=MSG_SPACE.yview)
 MSG_SPACE.config(yscrollcommand=SCROLL_BAR.set)
-SCROLL_BAR.place(x=30, y=150)
+SCROLL_BAR.place(x=421, y=150, height=293, anchor='ne')
 
 TEST_BTN = tk.Button(FRAME, text="Get",font=("微軟正黑體", 14), command=CHECK_IMG)
 TEST_BTN.place(x=300, y=100)
