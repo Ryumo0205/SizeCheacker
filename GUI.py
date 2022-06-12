@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter.ttk import Combobox
 from turtle import width
 
-
+#ListBox Ver
 
 # 定義方法_取得輸入欄內路徑
 
@@ -14,8 +14,7 @@ def CHECK_IMG():
     SC.SizeCheck(MULT_NUM)  # 將倍數放入引數執行檢查
     CHECK_TIMES = 0
     for OUTPUT_FALSE in SC.FALSE_LIST:
-        MSG_SPACE.insert(tk.INSERT, SC.FALSE_LIST[CHECK_TIMES])
-        MSG_SPACE.insert(tk.INSERT, "\n")
+        MSG_SPACE.insert(tk.END,SC.FALSE_LIST[CHECK_TIMES])
         CHECK_TIMES = CHECK_TIMES + 1
     SC.FALSE_LIST = []  # 還原成空列表
 
@@ -52,9 +51,13 @@ MULTIPLE_NUM_2 = tk.Radiobutton(FRAME, text="4倍", variable=RADIOVALUE, value=4
 MULTIPLE_NUM_1.place(x=150, y=100)
 MULTIPLE_NUM_2.place(x=200, y=100)
 # 文字顯示欄位，用來顯示被檢查出有問題的圖片
-MSG_SPACE = ScrolledText(FRAME, width=53, height=20)
+#MSG_SPACE = ScrolledText(FRAME, width=53, height=20)
+#MSG_SPACE.place(x=30, y=150)
+MSG_SPACE = tk.Listbox(FRAME, width=53, height=18)
 MSG_SPACE.place(x=30, y=150)
-
+SCROLL_BAR = tk.Scrollbar(FRAME, command=MSG_SPACE.yview)
+MSG_SPACE.config(yscrollcommand=SCROLL_BAR.set)
+SCROLL_BAR.place(x=30, y=150)
 
 TEST_BTN = tk.Button(FRAME, text="Get",font=("微軟正黑體", 14), command=CHECK_IMG)
 TEST_BTN.place(x=300, y=100)
