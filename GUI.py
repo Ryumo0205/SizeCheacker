@@ -16,12 +16,13 @@ def CHECK_IMG():
     for OUTPUT_FALSE in SC.FALSE_LIST:
         MSG_SPACE.insert(tk.END,SC.FALSE_LIST[CHECK_TIMES])
         CHECK_TIMES = CHECK_TIMES + 1
-    SC.FALSE_LIST = []  # 還原成空列表
-
+    #SC.FALSE_LIST = []  # 還原成空列表
 
 def CLEAR():
     MSG_SPACE.delete("1.0", "end")
-
+def TEST_OPEN():
+    import sizechecker as SC
+    SC.ClickOpenFile()
 
 #------------------介面內容-------------------#
 # 主視窗設定
@@ -45,7 +46,7 @@ ENTRY_SPACE.place(x=30, y=75)  # 輸入欄位置
 # 創造倍數選項
 RADIOVALUE = tk.IntVar()  # 倍數單選項內的變數型態
 MULTIPLE_NUM_1 = tk.Radiobutton(
-    FRAME, text="2倍", variable=RADIOVALUE, value=2)  # 倍數選單定義
+FRAME, text="2倍", variable=RADIOVALUE, value=2)  # 倍數選單定義
 MULTIPLE_NUM_2 = tk.Radiobutton(FRAME, text="4倍", variable=RADIOVALUE, value=4)
 
 MULTIPLE_NUM_1.place(x=150, y=100)
@@ -59,9 +60,11 @@ SCROLL_BAR = tk.Scrollbar(FRAME, command=MSG_SPACE.yview)
 MSG_SPACE.config(yscrollcommand=SCROLL_BAR.set)
 SCROLL_BAR.place(x=421, y=150, height=293, anchor='ne')
 
-TEST_BTN = tk.Button(FRAME, text="Get",font=("微軟正黑體", 14), command=CHECK_IMG)
-TEST_BTN.place(x=300, y=100)
-TEST_BTN2 = tk.Button(FRAME, text="Clear",font=("微軟正黑體", 14), command=CLEAR)
-TEST_BTN2.place(x=370, y=100)
+CHECK_BTN = tk.Button(FRAME, text="Get",font=("微軟正黑體", 14), command=CHECK_IMG)
+CHECK_BTN.place(x=300, y=100)
+CLEAR_BTN = tk.Button(FRAME, text="Clear",font=("微軟正黑體", 14), command=CLEAR)
+CLEAR_BTN.place(x=370, y=100)
+TEST_BTN = tk.Button(FRAME, text="OPEN",font=("微軟正黑體", 14), command=TEST_OPEN)
+TEST_BTN.place(x=370, y=200)
 
 MAIN_WINDOW.mainloop()
