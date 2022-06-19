@@ -1,4 +1,3 @@
-from ast import Pass
 import sys
 sys.path.append("modules")  # 新增根目錄下資料夾的模組搜尋路徑
 import GUI
@@ -29,18 +28,20 @@ def AllCheck():
 
 #------------檢查圖片是否符合倍數---------------#
 
-
 def SizeCheck(mult=int):
-    PATH_STR = GUI.ENTRY_SPACE.get()
+    PATH_STR = GUI.ENTRY_SPACE.get()    # 從UI介面輸入欄得到路徑
+    global IMGS_PATH_JPG 
+    global IMGS_PATH_PNG 
     IMGS_PATH_JPG = list(Path(PATH_STR).glob("*.jpg"))  # 定義圖片路徑為列表
     IMGS_PATH_PNG = list(Path(PATH_STR).glob("*.png"))  # 定義圖片路徑為列表
     print("檢查路徑:",PATH_STR)
     SET_NUM = mult  # 設定除數
-    # 檢查JPG用迴圈
     CHECK_TIMES_JPG = 0 #jpg檔檢查迴圈次數
     CHECK_TIMES_PNG = 0 #png檔檢查迴圈次數
     CHECK_BOOL_JPG = 0  #判斷jpg是否有不符合的檔案
     CHECK_BOOL_PNG = 0  #判斷png是否有不符合的檔案
+    
+    # 檢查JPG用迴圈
     for CHECk_IMGS_JPG in IMGS_PATH_JPG:
         IMG_NOW = Image.open(CHECk_IMGS_JPG)  # 開啟該迴圈的圖片
         GETSIZE = IMG_NOW.size  # 取得圖片尺寸tuple放至變數
@@ -50,7 +51,7 @@ def SizeCheck(mult=int):
                 pass
             else:
                 IMG_STATE = False
-                GET_FALSENAME = Path(IMGS_PATH_JPG[CHECK_TIMES_JPG].stem)  # 取得不含路徑檔名
+                GET_FALSENAME = Path(IMGS_PATH_JPG[CHECK_TIMES_JPG].stem)  # 取得不含路徑的檔名
                 FALSENAME = str(GET_FALSENAME)  # 路徑物件轉成字串
                 FALSE_LIST.append(FALSENAME + ".jpg")    # 加入不符合倍數的空列表
                 CHECK_BOOL_JPG = CHECK_BOOL_JPG + 1 #計算不符合的數量
@@ -85,7 +86,12 @@ def SizeCheck(mult=int):
 
     print("---------不合", SET_NUM, "倍數的圖片-----------")
 
-    for PRINT_FALSE in FALSE_LIST:
+    for PRINT_FALSE in FALSE_LIST:  #一行一行列出所有檢查到的檔名
         print(PRINT_FALSE)
     
-
+def ClickOpenFile():    #先簡單取得列表內路徑後開啟該元素內的圖片,待改寫
+    TARGET_LIST = IMGS_PATH_JPG[0]
+    print(TARGET_LIST)
+    PIC = Image.open(TARGET_LIST , 'r')
+    PIC.show()
+#如何取得雙擊list上的檔名後開啟圖片
