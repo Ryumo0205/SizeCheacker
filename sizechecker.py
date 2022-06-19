@@ -1,10 +1,9 @@
+from ast import Pass
 import sys
 sys.path.append("modules")  # 新增根目錄下資料夾的模組搜尋路徑
-import GUI #匯入GUI腳本
+import GUI
 from pathlib import Path
 from PIL import Image
-
-#ListBox Ver
 
 """ 檢查資料夾路境內的圖片能否被設定的數字整除 """
 #PATH_STR = GUI.ENTRY_SPACE.get()
@@ -88,3 +87,5 @@ def SizeCheck(mult=int):
         print(PRINT_FALSE)
     
 
+    #Git Test
+    #Git Test3
